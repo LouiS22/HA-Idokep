@@ -565,10 +565,12 @@ class HourlyForecastParser(WeatherParser):
         """Parse hourly forecast data."""
         result = {}
         forecast = []
-        now = datetime.datetime.now(tz=datetime.UTC)
+        local_tz = TimeUtils.get_local_timezone()
+        now = datetime.datetime.now(tz=local_tz)
 
-        # Start from tomorrow at midnight as the base date
-        base_date = (now + datetime.timedelta(days=1)).date()
+        # Start from today as the base date 
+        # (hourly forecast begins with today's remaining hours)
+        base_date = now.date()
 
         hourly_cards = soup.find_all("div", class_="ik wide-hourly-forecast-card")
 
