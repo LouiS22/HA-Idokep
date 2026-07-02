@@ -147,6 +147,7 @@ class WeatherConditionMapper:
         "fagyott eső": "snowy-rainy",
         "ónos eső": "snowy-rainy",
         "szeles": "windy",
+        "porvihar": "exceptional",
     }
 
     @classmethod
